@@ -4,9 +4,10 @@ import { createBot } from "@/src/lib/telegram/bot";
 // Grammy bot instance (singleton)
 let bot: ReturnType<typeof createBot> | null = null;
 
-function getBot() {
+async function getBot() {
   if (!bot) {
     bot = createBot();
+    await bot.init();
   }
   return bot;
 }
@@ -20,7 +21,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const b = getBot();
+    const b = await getBot();
     await b.handleUpdate(body);
     return NextResponse.json({ ok: true });
   } catch (err) {
