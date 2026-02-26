@@ -1,0 +1,147 @@
+{
+  "version": "2024-01-15",
+  "document_types": [
+    {
+      "code": "PATENTE_ORIGINALE",
+      "name_it": "Patente di guida originale",
+      "name_en": "Original driving licence",
+      "instructions_it": "Portare la patente originale in corso di validità. Sarà trattenuta dalla Motorizzazione al momento della presentazione della pratica.",
+      "instructions_en": "Bring the original valid driving licence. It will be retained by the Motorizzazione office when submitting the application."
+    },
+    {
+      "code": "TRADUZIONE_ASSEVERATA",
+      "name_it": "Traduzione asseverata della patente",
+      "name_en": "Certified/sworn translation of licence",
+      "instructions_it": "Traduzione ufficiale effettuata da traduttore iscritto all'albo (AIS) o giurato presso il Tribunale. Non sono accettate tradurzioni non certificate.",
+      "instructions_en": "Official translation by a sworn translator registered with AIS or the Court. Non-certified translations are not accepted."
+    },
+    {
+      "code": "PASSAPORTO",
+      "name_it": "Passaporto in corso di validità",
+      "name_en": "Valid passport",
+      "instructions_it": "Passaporto originale in corso di validità + fotocopia di tutte le pagine con timbri.",
+      "instructions_en": "Original valid passport + photocopy of all pages with stamps."
+    },
+    {
+      "code": "DOCUMENTO_IDENTITA",
+      "name_it": "Documento d'identità valido",
+      "name_en": "Valid identity document",
+      "instructions_it": "Carta d'identità italiana o europea, oppure passaporto in corso di validità.",
+      "instructions_en": "Italian or European identity card, or valid passport."
+    },
+    {
+      "code": "CODICE_FISCALE",
+      "name_it": "Codice Fiscale",
+      "name_en": "Tax Identification Number (Codice Fiscale)",
+      "instructions_it": "Tessera sanitaria con codice fiscale, o certificato di attribuzione del codice fiscale (dall'Agenzia delle Entrate).",
+      "instructions_en": "Health insurance card with tax code, or tax code attribution certificate (from Agenzia delle Entrate)."
+    },
+    {
+      "code": "RESIDENZA",
+      "name_it": "Certificato di residenza",
+      "name_en": "Certificate of residence",
+      "instructions_it": "Certificato di residenza rilasciato dal Comune. Deve essere recente (non più di 3 mesi).",
+      "instructions_en": "Certificate of residence issued by the municipality. Must be recent (not more than 3 months old)."
+    },
+    {
+      "code": "PERMESSO_SOGGIORNO",
+      "name_it": "Permesso di soggiorno o carta di soggiorno",
+      "name_en": "Residence permit or long-stay residence card",
+      "instructions_it": "Permesso di soggiorno in corso di validità, o carta di soggiorno UE. Deve avere durata residua sufficiente.",
+      "instructions_en": "Valid residence permit or EU long-term residence card. Must have sufficient remaining validity."
+    },
+    {
+      "code": "MARCA_BOLLO",
+      "name_it": "Marca da bollo (€ 16,00)",
+      "name_en": "Revenue stamp (€ 16.00)",
+      "instructions_it": "Marca da bollo da € 16,00 (importo soggetto ad aggiornamento). Acquistabile in tabaccheria o online.",
+      "instructions_en": "€ 16.00 revenue stamp (amount subject to change). Available at tobacconists or online."
+    },
+    {
+      "code": "FOTO_TESSERA",
+      "name_it": "Fotografie formato tessera",
+      "name_en": "Passport-sized photographs",
+      "instructions_it": "2 fotografie recenti, formato tessera (35x45mm), fondo bianco, volto ben visibile.",
+      "instructions_en": "2 recent passport-sized photos (35x45mm), white background, face clearly visible."
+    },
+    {
+      "code": "MODULO_TT2112",
+      "name_it": "Modulo TT2112 (richiesta conversione)",
+      "name_en": "Form TT2112 (conversion request)",
+      "instructions_it": "Modulo ministeriale TT2112 per la richiesta di conversione. Compilato dall'autoscuola insieme al candidato.",
+      "instructions_en": "Ministry form TT2112 for the conversion request. Completed by the driving school together with the candidate."
+    },
+    {
+      "code": "CERT_AUTENTICITA",
+      "name_it": "Certificato di autenticità patente",
+      "name_en": "Certificate of licence authenticity",
+      "instructions_it": "Certificato rilasciato dall'Ambasciata/Consolato del paese di rilascio che attesta l'autenticità della patente. Richiesto da alcuni paesi.",
+      "instructions_en": "Certificate issued by the Embassy/Consulate of the issuing country attesting the licence's authenticity. Required by some countries."
+    },
+    {
+      "code": "VISITA_MEDICA",
+      "name_it": "Certificato medico (visita CML)",
+      "name_en": "Medical certificate (CML examination)",
+      "instructions_it": "Certificato medico rilasciato da medico certificatore per l'idoneità alla guida. Necessario per categorie C, D e in casi specifici.",
+      "instructions_en": "Medical certificate issued by a certified doctor for driving fitness. Required for C, D categories and specific cases."
+    }
+  ],
+  "requirements": [
+    {
+      "zone": "eu_eea",
+      "country_iso": null,
+      "category": null,
+      "required_docs": [
+        { "code": "PATENTE_ORIGINALE", "mandatory": true, "conditional": null, "order": 1 },
+        { "code": "DOCUMENTO_IDENTITA", "mandatory": true, "conditional": null, "order": 2 },
+        { "code": "CODICE_FISCALE", "mandatory": true, "conditional": null, "order": 3 },
+        { "code": "RESIDENZA", "mandatory": true, "conditional": null, "order": 4 },
+        { "code": "MARCA_BOLLO", "mandatory": true, "conditional": null, "order": 5 },
+        { "code": "FOTO_TESSERA", "mandatory": true, "conditional": null, "order": 6 },
+        { "code": "MODULO_TT2112", "mandatory": true, "conditional": null, "order": 7 }
+      ]
+    },
+    {
+      "zone": "bilateral_agreement",
+      "country_iso": null,
+      "category": null,
+      "required_docs": [
+        { "code": "PATENTE_ORIGINALE", "mandatory": true, "conditional": null, "order": 1 },
+        { "code": "TRADUZIONE_ASSEVERATA", "mandatory": true, "conditional": null, "order": 2 },
+        { "code": "PASSAPORTO", "mandatory": true, "conditional": null, "order": 3 },
+        { "code": "PERMESSO_SOGGIORNO", "mandatory": true, "conditional": null, "order": 4 },
+        { "code": "CODICE_FISCALE", "mandatory": true, "conditional": null, "order": 5 },
+        { "code": "RESIDENZA", "mandatory": true, "conditional": null, "order": 6 },
+        { "code": "MARCA_BOLLO", "mandatory": true, "conditional": null, "order": 7 },
+        { "code": "FOTO_TESSERA", "mandatory": true, "conditional": null, "order": 8 },
+        { "code": "MODULO_TT2112", "mandatory": true, "conditional": null, "order": 9 },
+        { "code": "CERT_AUTENTICITA", "mandatory": false, "conditional": "Richiesto da alcuni consolati — verificare con la Motorizzazione competente", "order": 10 }
+      ]
+    },
+    {
+      "zone": "no_agreement",
+      "country_iso": null,
+      "category": null,
+      "required_docs": [
+        { "code": "DOCUMENTO_IDENTITA", "mandatory": true, "conditional": null, "order": 1 },
+        { "code": "CODICE_FISCALE", "mandatory": true, "conditional": null, "order": 2 }
+      ]
+    },
+    {
+      "zone": null,
+      "country_iso": null,
+      "category": "C",
+      "required_docs": [
+        { "code": "VISITA_MEDICA", "mandatory": true, "conditional": "Obbligatorio per categoria C (camion)", "order": 99 }
+      ]
+    },
+    {
+      "zone": null,
+      "country_iso": null,
+      "category": "D",
+      "required_docs": [
+        { "code": "VISITA_MEDICA", "mandatory": true, "conditional": "Obbligatorio per categoria D (bus)", "order": 99 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1230 @@
+{
+  "id": "b0a7fc0a-8153-42e7-8cb0-cd5848ffe51b",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.accordi_bilaterali": {
+      "name": "accordi_bilaterali",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "paese_iso": {
+          "name": "paese_iso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_inizio": {
+          "name": "data_inizio",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_fine": {
+          "name": "data_fine",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "in_vigore": {
+          "name": "in_vigore",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "categorie": {
+          "name": "categorie",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'"
+        },
+        "condizione_temporale": {
+          "name": "condizione_temporale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "anni_dalla_residenza": {
+          "name": "anni_dalla_residenza",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "richiede_esame_teoria": {
+          "name": "richiede_esame_teoria",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "richiede_esame_pratica": {
+          "name": "richiede_esame_pratica",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "reciproco": {
+          "name": "reciproco",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "riferimento_normativo": {
+          "name": "riferimento_normativo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "versione_dataset": {
+          "name": "versione_dataset",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fonte_id": {
+          "name": "fonte_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "accordi_bilaterali_fonte_id_fonti_normative_id_fk": {
+          "name": "accordi_bilaterali_fonte_id_fonti_normative_id_fk",
+          "tableFrom": "accordi_bilaterali",
+          "tableTo": "fonti_normative",
+          "columnsFrom": [
+            "fonte_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.autoscuole": {
+      "name": "autoscuole",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "codice_fiscale": {
+          "name": "codice_fiscale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "indirizzo": {
+          "name": "indirizzo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "citta": {
+          "name": "citta",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "telefono": {
+          "name": "telefono",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "piano": {
+          "name": "piano",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'trial'"
+        },
+        "piano_scadenza": {
+          "name": "piano_scadenza",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attiva": {
+          "name": "attiva",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "autoscuole_codice_fiscale_unique": {
+          "name": "autoscuole_codice_fiscale_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "codice_fiscale"
+          ]
+        },
+        "autoscuole_email_unique": {
+          "name": "autoscuole_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.documenti_pratica": {
+      "name": "documenti_pratica",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "pratica_id": {
+          "name": "pratica_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "autoscuola_id": {
+          "name": "autoscuola_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nome_originale": {
+          "name": "nome_originale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo_documento": {
+          "name": "tipo_documento",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "storage_key": {
+          "name": "storage_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dimensione_bytes": {
+          "name": "dimensione_bytes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "caricato_da": {
+          "name": "caricato_da",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "operatore_id": {
+          "name": "operatore_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "documenti_pratica_pratica_id_pratiche_id_fk": {
+          "name": "documenti_pratica_pratica_id_pratiche_id_fk",
+          "tableFrom": "documenti_pratica",
+          "tableTo": "pratiche",
+          "columnsFrom": [
+            "pratica_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "documenti_pratica_autoscuola_id_autoscuole_id_fk": {
+          "name": "documenti_pratica_autoscuola_id_autoscuole_id_fk",
+          "tableFrom": "documenti_pratica",
+          "tableTo": "autoscuole",
+          "columnsFrom": [
+            "autoscuola_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "documenti_pratica_operatore_id_operatori_id_fk": {
+          "name": "documenti_pratica_operatore_id_operatori_id_fk",
+          "tableFrom": "documenti_pratica",
+          "tableTo": "operatori",
+          "columnsFrom": [
+            "operatore_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.documenti_richiesti_config": {
+      "name": "documenti_richiesti_config",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "zona": {
+          "name": "zona",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "paese_iso": {
+          "name": "paese_iso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "categoria": {
+          "name": "categoria",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tipologia_id": {
+          "name": "tipologia_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "obbligatorio": {
+          "name": "obbligatorio",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "condizionale": {
+          "name": "condizionale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ordine": {
+          "name": "ordine",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "versione_dataset": {
+          "name": "versione_dataset",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "attivo": {
+          "name": "attivo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "documenti_richiesti_config_tipologia_id_tipologie_documento_id_fk": {
+          "name": "documenti_richiesti_config_tipologia_id_tipologie_documento_id_fk",
+          "tableFrom": "documenti_richiesti_config",
+          "tableTo": "tipologie_documento",
+          "columnsFrom": [
+            "tipologia_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.fonti_normative": {
+      "name": "fonti_normative",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "url_originale": {
+          "name": "url_originale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "storage_key": {
+          "name": "storage_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hash_contenuto": {
+          "name": "hash_contenuto",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_acquisizione": {
+          "name": "data_acquisizione",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "versione": {
+          "name": "versione",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estratto_json": {
+          "name": "estratto_json",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "diff_json": {
+          "name": "diff_json",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stato_review": {
+          "name": "stato_review",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'pending'"
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "applicato_da": {
+          "name": "applicato_da",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "applicato_at": {
+          "name": "applicato_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.note_pratica": {
+      "name": "note_pratica",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "pratica_id": {
+          "name": "pratica_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "operatore_id": {
+          "name": "operatore_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "testo": {
+          "name": "testo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "note_pratica_pratica_id_pratiche_id_fk": {
+          "name": "note_pratica_pratica_id_pratiche_id_fk",
+          "tableFrom": "note_pratica",
+          "tableTo": "pratiche",
+          "columnsFrom": [
+            "pratica_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "note_pratica_operatore_id_operatori_id_fk": {
+          "name": "note_pratica_operatore_id_operatori_id_fk",
+          "tableFrom": "note_pratica",
+          "tableTo": "operatori",
+          "columnsFrom": [
+            "operatore_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.operatori": {
+      "name": "operatori",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "autoscuola_id": {
+          "name": "autoscuola_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nome": {
+          "name": "nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cognome": {
+          "name": "cognome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ruolo": {
+          "name": "ruolo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'operatore'"
+        },
+        "attivo": {
+          "name": "attivo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "ultimo_accesso": {
+          "name": "ultimo_accesso",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "operatori_autoscuola_id_autoscuole_id_fk": {
+          "name": "operatori_autoscuola_id_autoscuole_id_fk",
+          "tableFrom": "operatori",
+          "tableTo": "autoscuole",
+          "columnsFrom": [
+            "autoscuola_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "operatori_email_unique": {
+          "name": "operatori_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.paesi": {
+      "name": "paesi",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "codice_iso": {
+          "name": "codice_iso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nome_it": {
+          "name": "nome_it",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nome_en": {
+          "name": "nome_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "zona": {
+          "name": "zona",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_eu_eea": {
+          "name": "is_eu_eea",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "ha_accordo": {
+          "name": "ha_accordo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "accordo_id": {
+          "name": "accordo_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "versione_dataset": {
+          "name": "versione_dataset",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fonte_id": {
+          "name": "fonte_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attivo": {
+          "name": "attivo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "paesi_fonte_id_fonti_normative_id_fk": {
+          "name": "paesi_fonte_id_fonti_normative_id_fk",
+          "tableFrom": "paesi",
+          "tableTo": "fonti_normative",
+          "columnsFrom": [
+            "fonte_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "paesi_codice_iso_unique": {
+          "name": "paesi_codice_iso_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "codice_iso"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.pratiche": {
+      "name": "pratiche",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "autoscuola_id": {
+          "name": "autoscuola_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "operatore_id": {
+          "name": "operatore_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "telegram_token": {
+          "name": "telegram_token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "telegram_chat_id": {
+          "name": "telegram_chat_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stato": {
+          "name": "stato",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'attesa_candidato'"
+        },
+        "candidato_nome": {
+          "name": "candidato_nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "candidato_cognome": {
+          "name": "candidato_cognome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "candidato_nascita": {
+          "name": "candidato_nascita",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "candidato_nazionalita": {
+          "name": "candidato_nazionalita",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "candidato_lingua": {
+          "name": "candidato_lingua",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'it'"
+        },
+        "paese_rilascio": {
+          "name": "paese_rilascio",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "categoria_patente": {
+          "name": "categoria_patente",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_rilascio_patente": {
+          "name": "data_rilascio_patente",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_scadenza_patente": {
+          "name": "data_scadenza_patente",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "patente_valida": {
+          "name": "patente_valida",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "numero_patente": {
+          "name": "numero_patente",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_prima_residenza": {
+          "name": "data_prima_residenza",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tipo_soggiorno": {
+          "name": "tipo_soggiorno",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scadenza_permesso": {
+          "name": "scadenza_permesso",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "classificazione": {
+          "name": "classificazione",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "classificazione_reasons": {
+          "name": "classificazione_reasons",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'[]'::jsonb"
+        },
+        "documenti_richiesti_output": {
+          "name": "documenti_richiesti_output",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'[]'::jsonb"
+        },
+        "info_mancanti": {
+          "name": "info_mancanti",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'[]'::jsonb"
+        },
+        "classificazione_at": {
+          "name": "classificazione_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "classificazione_versione": {
+          "name": "classificazione_versione",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "note_operatore": {
+          "name": "note_operatore",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pratiche_autoscuola_id_autoscuole_id_fk": {
+          "name": "pratiche_autoscuola_id_autoscuole_id_fk",
+          "tableFrom": "pratiche",
+          "tableTo": "autoscuole",
+          "columnsFrom": [
+            "autoscuola_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "pratiche_operatore_id_operatori_id_fk": {
+          "name": "pratiche_operatore_id_operatori_id_fk",
+          "tableFrom": "pratiche",
+          "tableTo": "operatori",
+          "columnsFrom": [
+            "operatore_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "pratiche_telegram_token_unique": {
+          "name": "pratiche_telegram_token_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "telegram_token"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.telegram_sessioni": {
+      "name": "telegram_sessioni",
+      "schema": "",
+      "columns": {
+        "chat_id": {
+          "name": "chat_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pratica_id": {
+          "name": "pratica_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stato_conv": {
+          "name": "stato_conv",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'start'"
+        },
+        "dati_raccolti": {
+          "name": "dati_raccolti",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::jsonb"
+        },
+        "step_corrente": {
+          "name": "step_corrente",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "lingua": {
+          "name": "lingua",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'it'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "telegram_sessioni_pratica_id_pratiche_id_fk": {
+          "name": "telegram_sessioni_pratica_id_pratiche_id_fk",
+          "tableFrom": "telegram_sessioni",
+          "tableTo": "pratiche",
+          "columnsFrom": [
+            "pratica_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.tipologie_documento": {
+      "name": "tipologie_documento",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "codice": {
+          "name": "codice",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nome_it": {
+          "name": "nome_it",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nome_en": {
+          "name": "nome_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "descrizione": {
+          "name": "descrizione",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "istruzioni_it": {
+          "name": "istruzioni_it",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "istruzioni_en": {
+          "name": "istruzioni_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attivo": {
+          "name": "attivo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "tipologie_documento_codice_unique": {
+          "name": "tipologie_documento_codice_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "codice"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
