@@ -24,14 +24,43 @@ function SetupForm() {
       setLoading(false);
       return;
     }
-    fetch(`/api/setup/lookup?email=${encodeURIComponent(email)}`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.error) setError(data.error);
-        else setAutoscuola(data);
-      })
-      .catch(() => setError("Errore di rete."))
-      .finally(() => setLoading(false));
+
+    let attempts = 0;
+    const maxAttempts = 10;
+
+    async function tryLookup() {
+      try {
+        const r = await fetch(`/api/setup/lookup?email=${encodeURIComponent(email)}`);
+        const data = await r.json();
+
+        if (r.status === 409) {
+          // Already configured
+          setError(data.error);
+          setLoading(false);
+          return;
+        }
+
+        if (r.ok) {
+          setAutoscuola(data);
+          setLoading(false);
+          return;
+        }
+
+        // Not found yet — retry up to 10 times (10s total)
+        attempts++;
+        if (attempts < maxAttempts) {
+          setTimeout(tryLookup, 1000);
+        } else {
+          setError(data.error ?? "Account non trovato.");
+          setLoading(false);
+        }
+      } catch {
+        setError("Errore di rete.");
+        setLoading(false);
+      }
+    }
+
+    tryLookup();
   }, [email]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -78,7 +107,10 @@ function SetupForm() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+        <div className="text-center space-y-3">
+          <Loader2 className="w-6 h-6 animate-spin text-blue-600 mx-auto" />
+          <p className="text-sm text-gray-500">Caricamento account in corso...</p>
+        </div>
       </div>
     );
   }
