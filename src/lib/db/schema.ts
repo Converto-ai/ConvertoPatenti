@@ -113,6 +113,8 @@ export const autoscuole = pgTable("autoscuole", {
   // trial | base | pro
   pianoScadenza: timestamp("piano_scadenza", { withTimezone: true }),
   attiva: boolean("attiva").notNull().default(true),
+  stripeCustomerId: text("stripe_customer_id").unique(),
+  stripeSubscriptionId: text("stripe_subscription_id").unique(),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
     .defaultNow(),

@@ -36,6 +36,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             attivo: operatori.attivo,
             autoscuolaId: operatori.autoscuolaId,
             autoscuolaNome: autoscuole.nome,
+            pianoScadenza: autoscuole.pianoScadenza,
           })
           .from(operatori)
           .innerJoin(autoscuole, eq(operatori.autoscuolaId, autoscuole.id))
@@ -60,6 +61,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           autoscuolaId: row.autoscuolaId,
           autoscuolaNome: row.autoscuolaNome ?? "",
           ruolo: row.ruolo,
+          pianoScadenza: row.pianoScadenza?.toISOString() ?? null,
         };
       },
     }),
@@ -71,6 +73,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.autoscuolaId = (user as { autoscuolaId: string }).autoscuolaId;
         token.autoscuolaNome = (user as { autoscuolaNome: string }).autoscuolaNome;
         token.ruolo = (user as { ruolo: string }).ruolo;
+        token.pianoScadenza = (user as { pianoScadenza: string | null }).pianoScadenza;
       }
       return token;
     },
@@ -79,6 +82,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       session.user.autoscuolaId = token.autoscuolaId as string;
       session.user.autoscuolaNome = token.autoscuolaNome as string;
       session.user.ruolo = token.ruolo as string;
+      session.user.pianoScadenza = token.pianoScadenza as string | null;
       return session;
     },
   },
@@ -101,6 +105,7 @@ declare module "next-auth" {
       autoscuolaId: string;
       autoscuolaNome: string;
       ruolo: string;
+      pianoScadenza: string | null;
     };
   }
 }

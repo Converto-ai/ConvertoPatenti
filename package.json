@@ -22,6 +22,7 @@
     "@grammyjs/storage-free": "^2.0.2",
     "@neondatabase/serverless": "^0.10.4",
     "@react-pdf/renderer": "^4.1.6",
+    "@stripe/stripe-js": "^9.4.0",
     "@vercel/blob": "^0.27.0",
     "bcryptjs": "^2.4.3",
     "cheerio": "^1.0.0",
@@ -38,6 +39,10 @@
     "pdf-parse": "^1.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "resend": "^6.12.2",
+    "stripe": "^22.1.0",
     "tailwind-merge": "^2.6.0",
     "zod": "^3.24.1"
   },
@@ -49,14 +54,14 @@
     "@types/react-dom": "^19",
     "@vitest/coverage-v8": "^2.1.9",
     "autoprefixer": "^10.0.1",
-    "dotenv": "^16.4.7",
-    "drizzle-kit": "^0.30.1",
+    "dotenv": "^16.6.1",
+    "drizzle-kit": "^0.30.6",
     "eslint": "^8",
     "eslint-config-next": "15.1.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.9.3",
+    "typescript": "5.9.3",
     "vitest": "^2.1.9"
   }
 }

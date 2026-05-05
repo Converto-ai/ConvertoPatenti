@@ -1,6 +1,7 @@
 import { auth } from "@/src/lib/auth/config";
 import { redirect } from "next/navigation";
 import { Sidebar } from "@/src/components/layout/sidebar";
+import { ChatPanel } from "@/src/components/chat/chat-panel";
 
 export default async function DashboardLayout({
   children,
@@ -20,6 +21,7 @@ export default async function DashboardLayout({
         operatoreNome={session.user.name}
       />
       <main className="flex-1 overflow-auto">{children}</main>
+      <ChatPanel />
     </div>
   );
 }
